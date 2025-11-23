@@ -42,9 +42,9 @@ jobs:
 
       - name: Copy package into SDK
         run: |
-          # 把仓库本身当成 luci-app-xupnpd 源码
           mkdir -p $GITHUB_WORKSPACE/openwrt-sdk/package/luci-app-xupnpd
-          cp -r $GITHUB_WORKSPACE/*  $GITHUB_WORKSPACE/openwrt-sdk/package/luci-app-xupnpd/
+          # 把仓库根目录里除 openwrt-sdk 以外的文件/目录拷过去
+          rsync -a --exclude=openwrt-sdk $GITHUB_WORKSPACE/ $GITHUB_WORKSPACE/openwrt-sdk/package/luci-app-xupnpd/
 
       - name: Update & Install feeds
         run: |
