@@ -30,6 +30,7 @@ EOF
 ln -sf /usr/share/xupnpd/playlists/iptv.m3u /www/iptv.m3u 2>/dev/null
 
 # 立即生效
+chmod +x /etc/init.d/xupnpd
 rm -f /tmp/luci-indexcache
 /etc/init.d/xupnpd enable
 /etc/init.d/xupnpd start
