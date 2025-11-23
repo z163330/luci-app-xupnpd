@@ -37,8 +37,8 @@ jobs:
       - name: Download & Extract SDK
         run: |
           wget -q ${{ matrix.sdk_url }}/${{ matrix.sdk_file }}
-          tar -xf ${{ matrix.sdk_file }}
-          mv openwrt-sdk-* openwrt-sdk
+          mkdir -p openwrt-sdk
+          tar -xf ${{ matrix.sdk_file }} -C openwrt-sdk --strip-components=1
 
       - name: Copy package into SDK
         run: |
