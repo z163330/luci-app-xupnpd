@@ -15,20 +15,20 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # 1. aarch64_generic（Rockchip armv8）
+          # 1. aarch64_generic（rockchip armv8）
           - arch: aarch64_generic
-            sdk_url: https://downloads.openwrt.org/releases/23.05.3/targets/rockchip/armv8
-            sdk_file: openwrt-sdk-23.05.3-rockchip-armv8_gcc-12.3.0_musl.Linux-x86_64.tar.xz
+            sdk_url: https://downloads.openwrt.org/releases/24.10.0/targets/rockchip/armv8
+            sdk_file: openwrt-sdk-24.10.0-rockchip-armv8_gcc-13.3.0_musl.Linux-x86_64.tar.xz
 
-          # 2. 经典树莓派 3/4 64 位
+          # 2. 树莓派 3/4 64 位
           - arch: aarch64_cortex-a53
-            sdk_url: https://downloads.openwrt.org/releases/23.05.3/targets/bcm27xx/bcm2710
-            sdk_file: openwrt-sdk-23.05.3-bcm27xx-bcm2710_gcc-12.3.0_musl.Linux-x86_64.tar.xz
+            sdk_url: https://downloads.openwrt.org/releases/24.10.0/targets/bcm27xx/bcm2710
+            sdk_file: openwrt-sdk-24.10.0-bcm27xx-bcm2710_gcc-13.3.0_musl.Linux-x86_64.tar.xz
 
           # 3. x86_64 软路由
           - arch: x86_64
-            sdk_url: https://downloads.openwrt.org/releases/23.05.3/targets/x86/64
-            sdk_file: openwrt-sdk-23.05.3-x86-64_gcc-12.3.0_musl.Linux-x86_64.tar.xz
+            sdk_url: https://downloads.openwrt.org/releases/24.10.0/targets/x86/64
+            sdk_file: openwrt-sdk-24.10.0-x86-64_gcc-13.3.0_musl.Linux-x86_64.tar.xz
 
     steps:
       - name: Checkout
