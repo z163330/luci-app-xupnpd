@@ -16,9 +16,9 @@ jobs:
       matrix:
         include:
           # 1. aarch64_generic（rockchip armv8）
-          # - arch: aarch64_generic
-          #   sdk_url: https://mirror-03.infra.openwrt.org/releases/24.10.4/targets/armsr/armv8
-          #   sdk_file: openwrt-sdk-24.10.4-armsr-armv8_gcc-13.3.0_musl.Linux-x86_64.tar.zst
+          - arch: aarch64_generic
+            sdk_url: https://mirror-03.infra.openwrt.org/releases/24.10.4/targets/armsr/armv8
+            sdk_file: openwrt-sdk-24.10.4-armsr-armv8_gcc-13.3.0_musl.Linux-x86_64.tar.zst
 
           # # 2. 树莓派 3/4 64 位
           # - arch: aarch64_cortex-a53
