@@ -1,16 +1,37 @@
 #!/bin/sh
 
+#uci -q batch <<-EOF >/dev/null
+#	delete ucitrack.@xupnpd[-1]
+#	add ucitrack xupnpd
+#	set ucitrack.@xupnpd[-1].init=xupnpd
+#	commit ucitrack
+#EOF
+#
+#rm -f /tmp/luci-indexcache
+#
+#chmod +x /etc/config/xupnpd
+#chmod +x /etc/init.d/xupnpd
+#ln -s /usr/share/xupnpd/playlists/iptv.m3u /www/iptv.m3u
+#
+#exit 0
+
+#!/bin/sh
+# 第一次安装时执行一次
+
+# 让 init.d 被 uci-track 管理
 uci -q batch <<-EOF >/dev/null
-	delete ucitrack.@xupnpd[-1]
-	add ucitrack xupnpd
-	set ucitrack.@xupnpd[-1].init=xupnpd
-	commit ucitrack
+        delete ucitrack.@xupnpd[-1]
+        add ucitrack xupnpd
+        set ucitrack.@xupnpd[-1].init=xupnpd
+        commit ucitrack
 EOF
 
-rm -f /tmp/luci-indexcache
+# 创建 Web 快捷链接（可选）
+ln -sf /usr/share/xupnpd/playlists/iptv.m3u /www/iptv.m3u 2>/dev/null
 
-chmod +x /etc/config/xupnpd
-chmod +x /etc/init.d/xupnpd
-ln -s /usr/share/xupnpd/playlists/iptv.m3u /www/iptv.m3u
+# 立即生效
+rm -f /tmp/luci-indexcache
+/etc/init.d/xupnpd enable
+/etc/init.d/xupnpd start
 
 exit 0
